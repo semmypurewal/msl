@@ -1,4 +1,11 @@
-(function (global) {
+// I've modified this to be consistent with the MSL approach to exporting
+// variables. This file defines a single variable called ASN1 that will
+// be in the "global" scope.
+//
+// Note that this file was built, so the changes don't correspond to the
+// component files from which it was built.
+
+var ASN1 = (function (global) {
 /** @const */
 var DEBUG=false;
 //================================================================================
@@ -9,7 +16,7 @@ var DEBUG=false;
 var DEBUG_BREAK_ON_ERROR = false;
 
 function debugLog(message) {
-  console.log(message);
+    //console.log(message);
 };
 
 function debugAssert(b, message) {
@@ -1152,7 +1159,10 @@ ASN1['webCryptoUsageToJwkKeyOps'] = webCryptoUsageToJwkKeyOps;
 (function (global) {
 "use strict";
 
-global['ASN1'] = ASN1;
+    // XXX: remove the 'global' export here
+    // to be consistent with MSL
+    // global['ASN1'] = ASN1;
+    return ASN1;
 
 }(global));
 }(this));

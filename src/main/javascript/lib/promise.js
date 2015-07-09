@@ -34,11 +34,19 @@
  *
  */
 
-(function (global, exporter) {
+// I've modified this to be consistent with the MSL approach to exporting
+// variables. This file defines a single variable called Promise that will
+// be in the "global" scope.
 
-    if (!global.Promise) {
-        global.Promise = exporter();
-    }
+// TODO: we should move to an ES6 promise shim
+var Promise = (function (global, exporter) {
+
+    // removed the global export so that it's
+    // consistent with the rest of MSL
+    // if (!global.Promise) {
+    //     global.Promise = exporter();
+    // }
+    return exporter();
 
 })(this, function () {
     "use strict";
